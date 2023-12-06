@@ -154,30 +154,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 12ae787d1cbe02542b0eaf9df67fead6, type: 2}
   blocktypes:
+  - Name: FullGrass
+    isSolid: 1
+    southTexture: 0
+    northTexture: 0
+    topTexture: 0
+    bottomTexture: 0
+    westTexture: 0
+    eastTexture: 0
   - Name: Stone
     isSolid: 1
-    southTexture: 0
-    northTexture: 0
-    topTexture: 0
-    bottomTexture: 0
-    westTexture: 0
-    eastTexture: 0
+    southTexture: 1
+    northTexture: 1
+    topTexture: 1
+    bottomTexture: 1
+    westTexture: 1
+    eastTexture: 1
   - Name: Dirt
     isSolid: 1
-    southTexture: 0
-    northTexture: 0
+    southTexture: 2
+    northTexture: 2
+    topTexture: 2
+    bottomTexture: 2
+    westTexture: 2
+    eastTexture: 2
+  - Name: Grass
+    isSolid: 1
+    southTexture: 3
+    northTexture: 3
     topTexture: 0
-    bottomTexture: 0
-    westTexture: 0
-    eastTexture: 0
+    bottomTexture: 2
+    westTexture: 3
+    eastTexture: 3
   - Name: Bedrock
     isSolid: 1
-    southTexture: 0
-    northTexture: 0
-    topTexture: 0
-    bottomTexture: 0
-    westTexture: 0
-    eastTexture: 0
+    southTexture: 17
+    northTexture: 17
+    topTexture: 17
+    bottomTexture: 17
+    westTexture: 17
+    eastTexture: 17
 --- !u!4 &569965866
 Transform:
   m_ObjectHideFlags: 0

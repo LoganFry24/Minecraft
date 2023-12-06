@@ -4,7 +4,18 @@ using UnityEngine;
 
 public class Chunk : MonoBehaviour
 {
-    //model object of the mesh
+    /*
+	todo:
+	ráér
+	rendet rakni texture mappába
+	//zölditeni a tilesetet
+	blockid és textuárk listája
+	kell:
+	player és caamera movement
+	block törlés és lerakás
+	világ genrálás és biomok
+	*/
+	//model object of the mesh
     public MeshRenderer meshRenderer;
 	//view object of the mesh
     public MeshFilter meshFilter;
@@ -20,7 +31,16 @@ public class Chunk : MonoBehaviour
 		for (int y = 0; y < Voxel.ChunkHeight; y++) {
 			for (int x = 0; x < Voxel.ChunkWidth; x++) {
 				for (int z = 0; z < Voxel.ChunkWidth; z++) {
-					voxelMap[x, y, z] = 0;
+					//voxelMap[x, y, z] = 0;
+					if (y < 1)
+                        voxelMap[x, y, z] = 4;//bedrock
+                    else if (y == Voxel.ChunkHeight - 1)
+                        voxelMap[x, y, z] = 3; //grass
+					else if (y == Voxel.ChunkHeight - 1)
+						voxelMap[x, y, z] = 2; //dirt
+                    else
+                        voxelMap [x, y, z] = 1; //stone
+    
 					
 				}
 			}
@@ -48,8 +68,10 @@ public class Chunk : MonoBehaviour
 		y = 1f - y - Voxel.GetTextureSize();
 		//set texture's corner coords
 		textures.Add(new Vector2(x,y)); //top left
-		textures.Add(new Vector2(x+Voxel.GetTextureSize(),y)); //top right 
 		textures.Add(new Vector2(x,y+Voxel.GetTextureSize())); //bottom left
+		textures.Add(new Vector2(x+Voxel.GetTextureSize(),y)); //top right
+		textures.Add(new Vector2(x+Voxel.GetTextureSize(),y)); //top right
+		textures.Add(new Vector2(x,y+Voxel.GetTextureSize())); //second bottom left
 		textures.Add(new Vector2(x+Voxel.GetTextureSize(),y+Voxel.GetTextureSize())); //bottom right 
 	}
 	void CreateVoxelModel(Vector3 position){
@@ -87,7 +109,15 @@ public class Chunk : MonoBehaviour
 		Mesh mesh = new Mesh();
 		mesh.vertices = vertices.ToArray();
 		mesh.triangles = triangles.ToArray();
-		mesh.uv = textures.ToArray();
+		// Assign UV coordinates
+        if (textures.Count == vertices.Count)
+        {
+            mesh.uv = textures.ToArray();
+        }
+        else
+        {
+            Debug.LogError("UV array size does not match the vertices array size.");
+        }
 		mesh.RecalculateNormals();//take normal vectors
 		//set mesh filter
 		meshFilter.mesh = mesh;

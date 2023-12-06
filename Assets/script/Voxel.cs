@@ -47,12 +47,12 @@ public static class Voxel
         {5, 2, 6}} 
 	};
     public static readonly Vector2[] textures = new Vector2[6] {
-        new Vector2 (0.0f, 0.0f),
-        new Vector2 (0.0f, 1.0f),
-        new Vector2 (1.0f, 0.0f),
-        new Vector2 (1.0f, 0.0f),
-        new Vector2 (0.0f, 1.0f),
-        new Vector2 (1.0f, 1.0f)
+        new Vector2 (0.0f, 0.0f),//topleft
+        new Vector2 (0.0f, 1.0f), //bottom left
+        new Vector2 (1.0f, 0.0f),  //top right
+        new Vector2 (1.0f, 0.0f), //second top right
+        new Vector2 (0.0f, 1.0f), //second bottom left
+        new Vector2 (1.0f, 1.0f) //bottom right
     };
     //for optimization (don't draw unneceserry sides)
     //define each side's visibilty vector
